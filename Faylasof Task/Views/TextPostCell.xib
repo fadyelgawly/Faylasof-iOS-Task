@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextPostCell" rowHeight="120" id="84W-lg-Zhq" customClass="TextPostCell" customModule="Faylasof_Task" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="84W-lg-Zhq" id="O2v-UY-uOF">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hd6-CW-PGX">
+                        <rect key="frame" x="20" y="35.5" width="374" height="79.5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="79.5" id="Uaf-7x-gwm"/>
+                            <constraint firstAttribute="width" constant="374" id="VQC-cM-aoR"/>
+                        </constraints>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aua-f6-FRX">
+                        <rect key="frame" x="20" y="10" width="374" height="20.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCg-HQ-zZe">
+                                <rect key="frame" x="0.0" y="0.0" width="183" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lud-RW-8p1">
+                                <rect key="frame" x="191" y="0.0" width="183" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hd6-CW-PGX" firstAttribute="leading" secondItem="O2v-UY-uOF" secondAttribute="leading" constant="20" id="BDi-Aw-hth"/>
+                    <constraint firstItem="aua-f6-FRX" firstAttribute="leading" secondItem="O2v-UY-uOF" secondAttribute="leading" constant="20" id="FXr-nz-HM6"/>
+                    <constraint firstAttribute="bottom" secondItem="hd6-CW-PGX" secondAttribute="bottom" constant="5" id="ZY9-kO-p26"/>
+                    <constraint firstAttribute="trailing" secondItem="aua-f6-FRX" secondAttribute="trailing" constant="20" id="aXO-8c-Hef"/>
+                    <constraint firstItem="hd6-CW-PGX" firstAttribute="top" secondItem="aua-f6-FRX" secondAttribute="bottom" constant="5" id="ely-mP-27d"/>
+                    <constraint firstAttribute="trailing" secondItem="hd6-CW-PGX" secondAttribute="trailing" constant="20" id="g6i-6o-E0p"/>
+                    <constraint firstItem="aua-f6-FRX" firstAttribute="top" secondItem="O2v-UY-uOF" secondAttribute="top" constant="10" id="l2A-di-Ii8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionText" destination="hd6-CW-PGX" id="ijb-rl-hRN"/>
+                <outlet property="likesLabel" destination="lud-RW-8p1" id="thW-NM-Hp3"/>
+                <outlet property="titleLabel" destination="PCg-HQ-zZe" id="Khl-uM-sJB"/>
+            </connections>
+            <point key="canvasLocation" x="360.86956521739131" y="22.767857142857142"/>
+        </tableViewCell>
+    </objects>
+</document>
