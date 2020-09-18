@@ -24,6 +24,6 @@ pod install
 
 ## Screenshots
 
-![Screenshot 1](https://github.com/fadyelgawly/Faylasof-iOS-Task/raw/master/Faylasof%20Task/Screenshots/Screenshot1.png)
-![Screenshot 2](https://github.com/fadyelgawly/Faylasof-iOS-Task/raw/master/Faylasof%20Task/Screenshots/Screenshot2.png)
-![Screenshot 3](https://github.com/fadyelgawly/Faylasof-iOS-Task/raw/master/Faylasof%20Task/Screenshots/Screenshot3.png)
+<img src="https://github.com/fadyelgawly/Faylasof-iOS-Task/raw/master/Faylasof%20Task/Screenshots/Screenshot1.png" align="left" height="864" width="400" > 
+<img src="https://github.com/fadyelgawly/Faylasof-iOS-Task/raw/master/Faylasof%20Task/Screenshots/Screenshot2.png" align="left" height="864" width="400" > 
+<img src="https://github.com/fadyelgawly/Faylasof-iOS-Task/raw/master/Faylasof%20Task/Screenshots/Screenshot3.png" align="left" height="864" width="400" > 
