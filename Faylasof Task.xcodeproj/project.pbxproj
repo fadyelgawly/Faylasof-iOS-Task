@@ -21,6 +21,9 @@
 		5E8517432512757E0032C015 /* TextPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E8517422512757E0032C015 /* TextPostCell.xib */; };
 		5E851745251275910032C015 /* TextPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E851744251275910032C015 /* TextPostCell.swift */; };
 		5E8517472514FFA60032C015 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8517462514FFA60032C015 /* UITableView.swift */; };
+		5E85174C251513610032C015 /* Screenshot2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E8517492515135F0032C015 /* Screenshot2.png */; };
+		5E85174D251513610032C015 /* Screenshot1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E85174A2515135F0032C015 /* Screenshot1.png */; };
+		5E85174E251513610032C015 /* Screenshot3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E85174B251513610032C015 /* Screenshot3.png */; };
 		5EC017A8250F7ADC008EB8C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC017A7250F7ADC008EB8C7 /* AppDelegate.swift */; };
 		5EC017AA250F7ADC008EB8C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC017A9250F7ADC008EB8C7 /* SceneDelegate.swift */; };
 		5EC017AF250F7ADC008EB8C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EC017AD250F7ADC008EB8C7 /* Main.storyboard */; };
@@ -64,6 +67,9 @@
 		5E8517422512757E0032C015 /* TextPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPostCell.xib; sourceTree = "<group>"; };
 		5E851744251275910032C015 /* TextPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPostCell.swift; sourceTree = "<group>"; };
 		5E8517462514FFA60032C015 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		5E8517492515135F0032C015 /* Screenshot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot2.png; sourceTree = "<group>"; };
+		5E85174A2515135F0032C015 /* Screenshot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot1.png; sourceTree = "<group>"; };
+		5E85174B251513610032C015 /* Screenshot3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot3.png; sourceTree = "<group>"; };
 		5EC017A4250F7ADC008EB8C7 /* Faylasof Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Faylasof Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC017A7250F7ADC008EB8C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EC017A9250F7ADC008EB8C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +168,16 @@
 			path = ViewContollers;
 			sourceTree = "<group>";
 		};
+		5E851748251513480032C015 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				5E85174A2515135F0032C015 /* Screenshot1.png */,
+				5E8517492515135F0032C015 /* Screenshot2.png */,
+				5E85174B251513610032C015 /* Screenshot3.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		5EC0179B250F7ADC008EB8C7 = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +203,7 @@
 		5EC017A6250F7ADC008EB8C7 /* Faylasof Task */ = {
 			isa = PBXGroup;
 			children = (
+				5E851748251513480032C015 /* Screenshots */,
 				5E851737250FEB7F0032C015 /* ViewContollers */,
 				5E851734250F9B5A0032C015 /* Extentions */,
 				5E851731250F8BCA0032C015 /* Singleton */,
@@ -353,10 +370,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E85174E251513610032C015 /* Screenshot3.png in Resources */,
 				5EC017B4250F7ADE008EB8C7 /* LaunchScreen.storyboard in Resources */,
+				5E85174D251513610032C015 /* Screenshot1.png in Resources */,
 				5EC017B1250F7ADE008EB8C7 /* Assets.xcassets in Resources */,
 				5E85172A250F80650032C015 /* GoogleService-Info.plist in Resources */,
 				5EC017AF250F7ADC008EB8C7 /* Main.storyboard in Resources */,
+				5E85174C251513610032C015 /* Screenshot2.png in Resources */,
 				5E8517432512757E0032C015 /* TextPostCell.xib in Resources */,
 				5EC017D8250F7B49008EB8C7 /* PostCell.xib in Resources */,
 			);
