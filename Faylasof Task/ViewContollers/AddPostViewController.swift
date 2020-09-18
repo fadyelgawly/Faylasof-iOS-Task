@@ -44,7 +44,8 @@ class AddPostViewController: UIViewController, UINavigationControllerDelegate, U
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             imagePicker.delegate = self
             imagePicker.sourceType = .savedPhotosAlbum
-            imagePicker.allowsEditing = true
+            imagePicker.allowsEditing = false
+            postTextField.resignFirstResponder()
 
             present(imagePicker, animated: true, completion: nil)
         }
@@ -58,6 +59,11 @@ class AddPostViewController: UIViewController, UINavigationControllerDelegate, U
         postTextField.delegate = self
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        postTextField.resignFirstResponder()
+        return true;
+    }
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
