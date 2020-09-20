@@ -9,7 +9,6 @@ Faylasof task for an iOS developer vacancy.
  - Firebase/Analytics (Used for linking with Firebase)
 
 ### Missing Requirements
- - Use of RxSwift (Singleton was used instead)
  - Support for uploading videos
  - Implementation of likes as the backend is not ready yet
 
