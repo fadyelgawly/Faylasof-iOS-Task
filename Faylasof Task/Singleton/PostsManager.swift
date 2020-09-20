@@ -10,12 +10,14 @@ import Foundation
 import FirebaseFirestore
 import Firebase
 import FirebaseStorage
+import RxSwift
 
 class PostsManager {
 
     // MARK: - Properties
 
     static let shared = PostsManager()
+    
     var db: Firestore!
     var images = [UIImage]()
     var imageNames = [String]()
@@ -31,52 +33,54 @@ class PostsManager {
         }
     }
     
-    func getAllPosts(completion: @escaping ([Post]) -> Void)  {
-        let collectionRef = db.collection("posts")
-        var posts = [Post]()
-        collectionRef.getDocuments { (querySnapshot, err) in
-            if let docs = querySnapshot?.documents {
-                
-                for post in docs {
+    func getPosts() -> Observable<[Post]> {
+        return Observable.create { observer -> Disposable in
+            let collectionRef = self.db.collection("posts")
+            var posts = [Post]()
+            collectionRef.getDocuments { (querySnapshot, err) in
+                if let docs = querySnapshot?.documents {
                     
-                    var id: Int?
-                    var title: String
-                    var description: String
-                    var img_url: String?
-                    var video_url: String?
-                    var likes_count: Int?
-                    
-                    if post["id"] != nil {
-                        id = post["id"] as? Int
+                    for post in docs {
+                        
+                        var id: Int?
+                        var title: String
+                        var description: String
+                        var img_url: String?
+                        var video_url: String?
+                        var likes_count: Int?
+                        
+                        if post["id"] != nil {
+                            id = post["id"] as? Int
+                        }
+                        
+                        title = post["title"] as! String
+                        description = post["description"] as! String
+                        
+                        if post["img_url"] != nil {
+                            img_url = post["img_url"] as? String
+                        }
+                        
+                        if post["video_url"] != nil {
+                            video_url = post["video_url"] as? String
+                        }
+                        if post["likes_count"] != nil {
+                            likes_count = post["likes_count"] as? Int
+                        }
+                        
+                        let tempPost = Post(id: id,
+                                         title: title,
+                                         description: description,
+                                         img_url: img_url,
+                                         video_url: video_url,
+                                         likes_count: likes_count)
+                        posts.append(tempPost)
+                   
                     }
-                    
-                    title = post["title"] as! String
-                    description = post["description"] as! String
-                    
-                    if post["img_url"] != nil {
-                        img_url = post["img_url"] as? String
-                    }
-                    
-                    if post["video_url"] != nil {
-                        video_url = post["video_url"] as? String
-                    }
-                    if post["likes_count"] != nil {
-                        likes_count = post["likes_count"] as? Int
-                    }
-                    
-                    let tempPost = Post(id: id,
-                                     title: title,
-                                     description: description,
-                                     img_url: img_url,
-                                     video_url: video_url,
-                                     likes_count: likes_count)
-                    posts.append(tempPost)
-               
                 }
+                observer.onNext(posts)
             }
-            completion(posts)
+            return Disposables.create()
         }
-        
     }
     
     func upload(image: UIImage, completion: ((String) -> Void)?){

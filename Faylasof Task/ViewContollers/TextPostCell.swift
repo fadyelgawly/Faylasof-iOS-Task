@@ -15,19 +15,15 @@ class TextPostCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var likesLabel: UILabel!
-    
     @IBOutlet weak var descriptionText: UITextView!
     
     override func layoutSubviews() {
         super.layoutSubviews()
-    
-        
-        if self.post != nil {
+       if self.post != nil {
             let likes = self.post!.likes_count ?? 0
             titleLabel.text = post!.title
             descriptionText.text = post!.description
             likesLabel.text = "\(likes) likes"
         }
     }
-
 }

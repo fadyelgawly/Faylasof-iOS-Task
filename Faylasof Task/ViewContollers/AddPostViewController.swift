@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class AddPostViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate,
     UITextFieldDelegate
@@ -35,18 +36,14 @@ class AddPostViewController: UIViewController, UINavigationControllerDelegate, U
                                         image: selectedImage)
         onDoneBlock!(true)
         self.dismiss(animated: true)
-        
     }
     
-    
     @IBAction func chooseMediaPressed(_ sender: Any) {
-        
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             imagePicker.delegate = self
             imagePicker.sourceType = .savedPhotosAlbum
             imagePicker.allowsEditing = false
             postTextField.resignFirstResponder()
-
             present(imagePicker, animated: true, completion: nil)
         }
     }
@@ -87,5 +84,3 @@ class AddPostViewController: UIViewController, UINavigationControllerDelegate, U
         self.dismiss(animated: true, completion: nil)
     }
 }
-
-

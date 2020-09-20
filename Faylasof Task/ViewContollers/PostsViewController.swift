@@ -7,85 +7,70 @@
 //
 
 import UIKit
+import RxSwift
 
 class PostsViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    
-    
-    @IBAction func testButton(_ sender: Any) {
-        PostsManager.shared.getAllPosts(completion: { (posts) in
-            self.posts = posts
-            self.tableView.reloadData()
-        })
-    }
-    
     var posts = [Post]()
     var progressHUD : ProgressHUD?
     var refreshControl = UIRefreshControl()
-    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newPostButton: UIButton!
-    
     @IBAction func newPostPressed(_ sender: Any) {
         let newPostVC : AddPostViewController = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "newPostVC") as! AddPostViewController
-        
        newPostVC.onDoneBlock = { result in
-        self.newPostButton.isHidden = true
         self.progressHUD!.show()
-        PostsManager.shared.getAllPosts(completion: { (posts) in
-            self.posts = posts
-            self.tableView.reloadData()
-            self.progressHUD!.hide()
-            self.newPostButton.isHidden = false
-        })
+        self.getPosts(completion: nil)
         }
-        
         self.present(newPostVC, animated: true, completion: nil)
-        
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        
         self.refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        self.tableView.addSubview(refreshControl) // not required when using UITableViewController
-        progressHUD = ProgressHUD(text: "Loading Posts")
+        self.tableView.addSubview(refreshControl)
+        self.progressHUD = ProgressHUD(text: "Loading Posts")
         self.view.addSubview(progressHUD!)
-        self.newPostButton.isHidden = true
-
-        PostsManager.shared.getAllPosts(completion: { (posts) in
-            self.posts = posts
-            self.tableView.reloadData()
-            self.progressHUD!.hide()
-            self.newPostButton.isHidden = false
-        })
         
+        getPosts(completion: nil)
     }
+    
     @objc func refresh(_ sender: AnyObject) {
         print("Will refresh data")
-        self.newPostButton.isHidden = true
-        PostsManager.shared.getAllPosts(completion: { (posts) in
-            self.posts = posts
-            self.tableView.reloadData()
-            self.newPostButton.isHidden = false
-            self.tableView.scroll(to: .top, animated: true)
-            self.tableView.refreshControl = nil
+        getPosts(completion: {
             self.refreshControl.endRefreshing()
-            print("Data refreshed")
         })
     }
-       
+    
+    func getPosts(completion: (() -> Void)?){
+        let postMananger = PostsManager()
+        postMananger.getPosts().subscribe(onNext: {[weak self] posts in
+            self?.posts = posts
+            self?.tableView.reloadData()
+            self?.progressHUD!.hide()
+            completion?()
+        }, onError: {[weak self] error in
+            self?.posts = []
+            self?.tableView.reloadData()
+            self?.progressHUD!.hide()
+            
+            let alert = UIAlertController(title: "Alert", message: "Error", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self?.present(alert, animated: true, completion: {
+                completion?()
+            })
+        },
+           onCompleted: nil,
+           onDisposed: nil)
+    }
 }
 
 extension PostsViewController : UITableViewDelegate , UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.posts.count
     }
